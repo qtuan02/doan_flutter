@@ -1,8 +1,8 @@
 class Product{
-  final String product_id;
+  final int product_id;
   final String image;
   final String product_name;
-  final String price;
+  final int price;
   final String description;
   final String quantity;
   final String promotion;
