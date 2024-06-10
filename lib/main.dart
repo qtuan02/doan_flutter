@@ -1,18 +1,25 @@
-import 'dart:convert';
-import 'package:banhangdienmay/view/cart/cartWidget.dart';
-import 'package:banhangdienmay/view/home.dart';
+// import 'dart:convert';
+// import 'package:banhangdienmay/view/home.dart';
+// import 'package:banhangdienmay/view/cart/cartWidget.dart';
+import 'package:banhangdienmay/view/favorite.dart';
 import 'package:banhangdienmay/view/product/productWidget.dart';
-import 'package:banhangdienmay/view/product/product.dart';
+import 'package:banhangdienmay/view/profile.dart';
+// import 'package:banhangdienmay/view/product/product.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:http/http.dart' as http;
+// import 'package:http/http.dart' as http;
+
 void main() {
-  runApp(MyApp());
+  runApp(const Main());
 }
 
+class Main extends StatefulWidget {
+  const Main({super.key});
+  @override
+  MainPage createState() => MainPage();
+}
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+class MainPage extends State<Main> {
   @override
   Widget build(BuildContext context) {
     int index = 0;
@@ -74,8 +81,11 @@ class MyApp extends StatelessWidget {
           ],
         ),
       ),
-      body: Home(),
-      // body: Cartwidget(),
+      // body: Home(),
+      // body: const Product(),
+      // body: const CartWidget(),
+      // body: const Favorite(),
+        body: const Profile(),
       bottomNavigationBar: NavigationBar(
           selectedIndex: index,
           destinations: const [
@@ -93,7 +103,7 @@ class MyApp extends StatelessWidget {
               icon: Icon(Icons.shopping_basket_outlined,
                   color: Color(0xFFFE0000)),
               selectedIcon: Icon(Icons.shopping_basket),
-              label: 'Giỏ hàng',
+              label: 'Mua hàng',
             ),
             NavigationDestination(
               icon: Icon(Icons.person_outline, color: Color(0xFFFE0000)),

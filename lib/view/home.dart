@@ -2,7 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class Home extends StatelessWidget {
+class Home extends StatefulWidget {
+  const Home({super.key});
+  @override
+  HomePage createState() => HomePage();
+}
+
+class HomePage extends State<Home> {
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -24,7 +31,7 @@ class Home extends StatelessWidget {
                         borderRadius: BorderRadius.circular(12),
                       ),
                       child: Image.asset(
-                        'assets/banner_sale.jpg', // Đường dẫn tới ảnh banner của bạn
+                        'assets/banner_sale.jpg', 
                         fit: BoxFit.cover,
                       ),
                     ),
