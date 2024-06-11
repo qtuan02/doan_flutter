@@ -1,4 +1,5 @@
 import 'package:banhangdienmay/api/fetchApi.dart';
+import 'package:banhangdienmay/api/fetchData.dart';
 import 'package:banhangdienmay/model/bannerModel.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/cupertino.dart';
@@ -14,18 +15,11 @@ class MyCarouselSlider extends StatefulWidget {
 class _MyCarouselSliderState extends State<MyCarouselSlider> {
   List<BannerModel> banners = [];
   int currentIndex = 0;
-  void fetchData() async {
-    Map<String, dynamic> dataBanner = await fetchBanner();
-    Iterable listBanner = dataBanner['data'];
-    setState(() {
-      banners = listBanner.map((value) => BannerModel.fromJson(value)).toList();
-    });
-  }
 
   @override
   void initState() {
     super.initState();
-    fetchData();
+    banners = Data().banners;
   }
 
   @override

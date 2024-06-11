@@ -11,3 +11,13 @@ Future<Map<String, dynamic>> fetchBanner() async {
     throw Exception("Call api falied !");
   }
 }
+
+Future<Map<String, dynamic>> fetchCategory() async {
+  final res = await http.get(Uri.parse('$BASE_URL_LOCAL/v1/category'));
+  if (res.statusCode == 200) {
+    final result = jsonDecode(res.body) as Map<String, dynamic>;
+    return result;
+  } else {
+    throw Exception("Call api falied !");
+  }
+}

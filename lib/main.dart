@@ -1,3 +1,4 @@
+import 'package:banhangdienmay/common/router.dart';
 import 'package:banhangdienmay/view/home/home.dart';
 import 'package:banhangdienmay/widget/AppBar.dart';
 import 'package:banhangdienmay/widget/BottomNavigationBar.dart';
@@ -13,12 +14,8 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
-      ),
-      home: const MyHomePage(),
+    return MaterialApp.router(
+      routerConfig: Routes().routes,
     );
   }
 }
