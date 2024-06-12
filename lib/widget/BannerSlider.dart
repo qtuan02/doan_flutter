@@ -28,7 +28,7 @@ class _MyCarouselSliderState extends State<MyCarouselSlider> {
       children: [
         CarouselSlider(
           options: CarouselOptions(
-            height: 180.0,
+            height: 190.0,
             viewportFraction: 1,
             autoPlay: true,
             autoPlayInterval: const Duration(seconds: 2),
