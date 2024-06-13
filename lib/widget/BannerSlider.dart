@@ -1,26 +1,16 @@
-import 'package:banhangdienmay/api/fetchApi.dart';
 import 'package:banhangdienmay/api/fetchData.dart';
-import 'package:banhangdienmay/model/bannerModel.dart';
 import 'package:carousel_slider/carousel_slider.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-class MyCarouselSlider extends StatefulWidget {
-  const MyCarouselSlider({super.key});
+class MyBannerSlider extends StatefulWidget {
+  const MyBannerSlider({super.key});
 
   @override
-  State<MyCarouselSlider> createState() => _MyCarouselSliderState();
+  State<MyBannerSlider> createState() => _MyBannerSliderState();
 }
 
-class _MyCarouselSliderState extends State<MyCarouselSlider> {
-  List<BannerModel> banners = [];
+class _MyBannerSliderState extends State<MyBannerSlider> {
   int currentIndex = 0;
-
-  @override
-  void initState() {
-    super.initState();
-    banners = Data().banners;
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -28,7 +18,7 @@ class _MyCarouselSliderState extends State<MyCarouselSlider> {
       children: [
         CarouselSlider(
           options: CarouselOptions(
-            height: 180.0,
+            height: 190.0,
             viewportFraction: 1,
             autoPlay: true,
             autoPlayInterval: const Duration(seconds: 2),
@@ -39,7 +29,7 @@ class _MyCarouselSliderState extends State<MyCarouselSlider> {
               });
             },
           ),
-          items: banners.map((i) {
+          items: Data().banners.map((i) {
             return Builder(
               builder: (BuildContext context) {
                 return Container(
@@ -60,7 +50,7 @@ class _MyCarouselSliderState extends State<MyCarouselSlider> {
           bottom: 10,
           child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
-            children: indicators(banners.length, currentIndex)
+            children: indicators(Data().banners.length, currentIndex)
           ),
         ),
       ]

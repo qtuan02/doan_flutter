@@ -1,9 +1,11 @@
 import 'package:banhangdienmay/model/bannerModel.dart';
 import 'package:banhangdienmay/model/categoryModel.dart';
+import 'package:banhangdienmay/model/productModel.dart';
 
 class Data {
   List<BannerModel> banners = [];
   List<CategoryModel> categories = [];
+  List<ProductModel> productPopular = [];
   static final Data _instance = Data._internal();
   factory Data() {
     return _instance;
