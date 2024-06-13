@@ -38,6 +38,5 @@ class _MyHomePageState extends State<MyHomePage> {
       body: Home(),
       bottomNavigationBar: MyBottomNavigationBar(),
     );
-    // return const LoadingScreen();
   }
 }

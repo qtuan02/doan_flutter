@@ -1,6 +1,6 @@
-import 'package:flutter/cupertino.dart';
+import 'package:banhangdienmay/api/fetchData.dart';
+import 'package:banhangdienmay/widget/ProductItem.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 
 class MyProductPopular extends StatefulWidget {
   const MyProductPopular({super.key});
@@ -16,28 +16,25 @@ class _MyProductPopularState extends State<MyProductPopular> {
       children: [
         Container(
             width: double.infinity,
+            margin: const EdgeInsets.only(bottom: 10),
             decoration: const BoxDecoration(
               color: Colors.white,
             ),
-            padding: EdgeInsets.fromLTRB(10, 14, 0, 14),
-            child: Text("SẢN PHẨM BÁN CHẠY", style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20, color: Color(0xFFFE0000)))
+            padding: const EdgeInsets.fromLTRB(10, 14, 0, 14),
+            child: const Text("SẢN PHẨM BÁN CHẠY", style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20, color: Color(0xFFFE0000)))
         ),
         GridView.builder(
-          physics: NeverScrollableScrollPhysics(),
+          physics: const NeverScrollableScrollPhysics(),
           shrinkWrap: true,
-          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
             crossAxisCount: 2,
-            crossAxisSpacing: 10.0,
+            crossAxisSpacing: 5.0,
             mainAxisSpacing: 5.0,
+            childAspectRatio: 0.8,
           ),
-          itemCount: 10,
+          itemCount: Data().productPopular.length,
           itemBuilder: (context, index) {
-            return Container(
-              child: Center(child: Text("$index")),
-              color: Colors.cyan,
-              padding: EdgeInsets.all(10),
-              margin: EdgeInsets.all(5),
-            );
+            return ProductItem(product: Data().productPopular[index]);
           },
         ),
       ],
