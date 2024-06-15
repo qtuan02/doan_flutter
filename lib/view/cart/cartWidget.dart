@@ -1,14 +1,34 @@
+
+import 'package:banhangdienmay/model/productModel.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'dart:ui';
 import 'package:google_fonts/google_fonts.dart';
 
 class CartWidget extends StatefulWidget {
+
   const CartWidget({super.key});
   @override
   CartwidgetPage createState() => CartwidgetPage();
 }
 
 class CartwidgetPage extends State<CartWidget> {
+  int quantity = 1;
+
+  void incrementQuantity() {
+    setState(() {
+      quantity++;
+    });
+  }
+
+  void decrementQuantity() {
+    if (quantity > 1) {
+      setState(() {
+        quantity--;
+      });
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -29,48 +49,49 @@ class CartwidgetPage extends State<CartWidget> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Container(
-                        margin: const EdgeInsets.fromLTRB(16, 0, 16, 41),
+                        margin: const EdgeInsets.fromLTRB(16, 15, 16, 41),
                         child: Align(
                           alignment: Alignment.topLeft,
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.start,
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Container(
-                                margin:
-                                    const EdgeInsets.fromLTRB(0, 0, 26.4, 0),
+                              GestureDetector(
+                                onTap: () {
+                                  context.go('/home');
+                                },
                                 child: Container(
                                   decoration: BoxDecoration(
-                                    color: const Color(0xFFF8F9FB),
-                                    borderRadius: BorderRadius.circular(20),
+                                    color: const Color(0xFFFFFFFF),
+                                    borderRadius: BorderRadius.circular(50),
                                   ),
                                   child: Container(
-                                    width: 40,
-                                    height: 40,
+                                    width: 48,
+                                    height: 48,
                                     padding: const EdgeInsets.fromLTRB(
-                                        10, 10, 17, 16),
+                                        10, 10, 15.2, 16),
                                     child: const SizedBox(
-                                      width: 5,
-                                      height: 8.4,
+                                      width: 17.8,
+                                      height: 16,
                                       child: Icon(
                                         Icons.arrow_back,
                                         color: Color(0xFFFE0000),
-                                        size: 20,
+                                        size: 30,
                                       ),
                                     ),
                                   ),
                                 ),
                               ),
                               Container(
-                                margin: const EdgeInsets.fromLTRB(0, 8, 0, 8),
+                                margin: const EdgeInsets.fromLTRB(10, 10, 0, 10),
                                 child: Text(
                                   'Giỏ hàng',
                                   style: GoogleFonts.getFont(
-                                    'Manrope',
+                                    'Roboto Condensed',
                                     fontWeight: FontWeight.w500,
                                     fontSize: 20,
-                                    height: 1,
-                                    color: const Color(0xFF1E222B),
+                                    height: 1.4,
+                                    color: const Color(0xFF101817),
                                   ),
                                 ),
                               ),
@@ -120,622 +141,6 @@ class CartwidgetPage extends State<CartWidget> {
                                         style: GoogleFonts.getFont(
                                           'Manrope',
                                           fontWeight: FontWeight.w500,
-                                          fontSize: 14,
-                                          color: const Color(0xFF1E222B),
-                                        ),
-                                      ),
-                                    ),
-                                    Align(
-                                      alignment: Alignment.topLeft,
-                                      child: Text(
-                                        '\$7.90',
-                                        style: GoogleFonts.getFont(
-                                          'Manrope',
-                                          fontWeight: FontWeight.w400,
-                                          fontSize: 14,
-                                          height: 1.4,
-                                          color: const Color(0xFF1E222B),
-                                        ),
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ],
-                            ),
-                            Container(
-                              margin: const EdgeInsets.fromLTRB(0, 2, 0, 0),
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.start,
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Container(
-                                    margin:
-                                        const EdgeInsets.fromLTRB(0, 0, 8, 0),
-                                    child: Container(
-                                      decoration: BoxDecoration(
-                                        color: const Color(0xFFF0F0F2),
-                                        borderRadius: BorderRadius.circular(13),
-                                      ),
-                                      child: Container(
-                                        width: 26,
-                                        height: 26,
-                                        padding: const EdgeInsets.fromLTRB(
-                                            8, 13, 7.5, 11.5),
-                                        child: Container(
-                                          decoration: const BoxDecoration(
-                                            color: Color(0xFF828A89),
-                                          ),
-                                          child: const SizedBox(
-                                            width: 10.5,
-                                            height: 1.5,
-                                          ),
-                                        ),
-                                      ),
-                                    ),
-                                  ),
-                                  Container(
-                                    margin: const EdgeInsets.fromLTRB(
-                                        0, 5, 10.9, 10),
-                                    child: Text(
-                                      '2',
-                                      style: GoogleFonts.getFont(
-                                        'Manrope',
-                                        fontWeight: FontWeight.w500,
-                                        fontSize: 14,
-                                        height: 1.4,
-                                        color: const Color(0xFF1E222B),
-                                      ),
-                                    ),
-                                  ),
-                                  Container(
-                                    margin:
-                                        const EdgeInsets.fromLTRB(0, 0, 8, 0),
-                                    child: Container(
-                                      decoration: BoxDecoration(
-                                        color: const Color(0xFFF0F0F2),
-                                        borderRadius: BorderRadius.circular(13),
-                                      ),
-                                      width: 26,
-                                      height: 26,
-                                      child: Stack(
-                                        alignment: Alignment.center,
-                                        children: [
-                                          Container(
-                                            width: 10.5,
-                                            height: 1.5,
-                                            color: const Color(0xFFFE0000),
-                                          ),
-                                          Container(
-                                            width: 1.5,
-                                            height: 10.5,
-                                            color: const Color(0xFFFE0000),
-                                          ),
-                                        ],
-                                      ),
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                      Container(
-                        margin: const EdgeInsets.fromLTRB(16, 0, 16, 19.5),
-                        child: Container(
-                          decoration: const BoxDecoration(
-                            color: Color(0xFFEBEBFB),
-                          ),
-                          child: const SizedBox(
-                            width: 327,
-                            height: 0.5,
-                          ),
-                        ),
-                      ),
-                      Container(
-                        margin: const EdgeInsets.fromLTRB(22, 0, 12, 16),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.start,
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Container(
-                                  margin:
-                                      const EdgeInsets.fromLTRB(0, 4, 26, 8),
-                                  child: Opacity(
-                                    opacity: 0.6,
-                                    child: Container(
-                                      width: 30,
-                                      height: 30,
-                                      padding: const EdgeInsets.fromLTRB(
-                                          2.5, 2.5, 2.5, 2.5),
-                                      child: SizedBox(
-                                        width: 25,
-                                        height: 25,
-                                        child: Image.asset(
-                                          'assets/product1.png',
-                                        ),
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                                Column(
-                                  mainAxisAlignment: MainAxisAlignment.start,
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Container(
-                                      margin:
-                                          const EdgeInsets.fromLTRB(0, 0, 0, 3),
-                                      child: Text(
-                                        'Product 2',
-                                        style: GoogleFonts.getFont(
-                                          'Manrope',
-                                          fontWeight: FontWeight.w400,
-                                          fontSize: 14,
-                                          color: const Color(0xFF1E222B),
-                                        ),
-                                      ),
-                                    ),
-                                    Align(
-                                      alignment: Alignment.topLeft,
-                                      child: Text(
-                                        '\$7.90',
-                                        style: GoogleFonts.getFont(
-                                          'Manrope',
-                                          fontWeight: FontWeight.w400,
-                                          fontSize: 14,
-                                          height: 1.4,
-                                          color: const Color(0xFF1E222B),
-                                        ),
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ],
-                            ),
-                            Container(
-                              margin: const EdgeInsets.fromLTRB(0, 2, 0, 0),
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.start,
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Container(
-                                    margin:
-                                        const EdgeInsets.fromLTRB(0, 0, 8, 0),
-                                    child: Container(
-                                      decoration: BoxDecoration(
-                                        color: const Color(0xFFF0F0F2),
-                                        borderRadius: BorderRadius.circular(13),
-                                      ),
-                                      child: Container(
-                                        width: 26,
-                                        height: 26,
-                                        padding: const EdgeInsets.fromLTRB(
-                                            8, 13, 7.5, 11.5),
-                                        child: Container(
-                                          decoration: const BoxDecoration(
-                                            color: Color(0xFF828A89),
-                                          ),
-                                          child: const SizedBox(
-                                            width: 10.5,
-                                            height: 1.5,
-                                          ),
-                                        ),
-                                      ),
-                                    ),
-                                  ),
-                                  Container(
-                                    margin: const EdgeInsets.fromLTRB(
-                                        0, 5, 10.9, 10),
-                                    child: Text(
-                                      '2',
-                                      style: GoogleFonts.getFont(
-                                        'Manrope',
-                                        fontWeight: FontWeight.w500,
-                                        fontSize: 14,
-                                        height: 1.4,
-                                        color: const Color(0xFF1E222B),
-                                      ),
-                                    ),
-                                  ),
-                                  Container(
-                                    margin:
-                                        const EdgeInsets.fromLTRB(0, 0, 8, 0),
-                                    child: Container(
-                                      decoration: BoxDecoration(
-                                        color: const Color(0xFFF0F0F2),
-                                        borderRadius: BorderRadius.circular(13),
-                                      ),
-                                      width: 26,
-                                      height: 26,
-                                      child: Stack(
-                                        alignment: Alignment.center,
-                                        children: [
-                                          Container(
-                                            width: 10.5,
-                                            height: 1.5,
-                                            color: const Color(0xFFFE0000),
-                                          ),
-                                          Container(
-                                            width: 1.5,
-                                            height: 10.5,
-                                            color: const Color(0xFFFE0000),
-                                          ),
-                                        ],
-                                      ),
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                      Container(
-                        margin: const EdgeInsets.fromLTRB(16, 0, 16, 19.5),
-                        child: Container(
-                          decoration: const BoxDecoration(
-                            color: Color(0xFFEBEBFB),
-                          ),
-                          child: const SizedBox(
-                            width: 327,
-                            height: 0.5,
-                          ),
-                        ),
-                      ),
-                      Container(
-                        margin: const EdgeInsets.fromLTRB(22, 0, 12, 16),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.start,
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Container(
-                                  margin:
-                                      const EdgeInsets.fromLTRB(0, 4, 26, 8),
-                                  child: Opacity(
-                                    opacity: 0.6,
-                                    child: Container(
-                                      width: 30,
-                                      height: 30,
-                                      padding: const EdgeInsets.fromLTRB(
-                                          2.5, 2.5, 2.5, 2.5),
-                                      child: SizedBox(
-                                        width: 25,
-                                        height: 25,
-                                        child: Image.asset(
-                                          'assets/product1.png',
-                                        ),
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                                Column(
-                                  mainAxisAlignment: MainAxisAlignment.start,
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Container(
-                                      margin:
-                                          const EdgeInsets.fromLTRB(0, 0, 0, 3),
-                                      child: Text(
-                                        'Product 3',
-                                        style: GoogleFonts.getFont(
-                                          'Manrope',
-                                          fontWeight: FontWeight.w400,
-                                          fontSize: 14,
-                                          color: const Color(0xFF1E222B),
-                                        ),
-                                      ),
-                                    ),
-                                    Align(
-                                      alignment: Alignment.topLeft,
-                                      child: Text(
-                                        '\$7.90',
-                                        style: GoogleFonts.getFont(
-                                          'Manrope',
-                                          fontWeight: FontWeight.w400,
-                                          fontSize: 14,
-                                          height: 1.4,
-                                          color: const Color(0xFF1E222B),
-                                        ),
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ],
-                            ),
-                            Container(
-                              margin: const EdgeInsets.fromLTRB(0, 2, 0, 0),
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.start,
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Container(
-                                    margin:
-                                        const EdgeInsets.fromLTRB(0, 0, 8, 0),
-                                    child: Container(
-                                      decoration: BoxDecoration(
-                                        color: const Color(0xFFF0F0F2),
-                                        borderRadius: BorderRadius.circular(13),
-                                      ),
-                                      child: Container(
-                                        width: 26,
-                                        height: 26,
-                                        padding: const EdgeInsets.fromLTRB(
-                                            8, 13, 7.5, 11.5),
-                                        child: Container(
-                                          decoration: const BoxDecoration(
-                                            color: Color(0xFF828A89),
-                                          ),
-                                          child: const SizedBox(
-                                            width: 10.5,
-                                            height: 1.5,
-                                          ),
-                                        ),
-                                      ),
-                                    ),
-                                  ),
-                                  Container(
-                                    margin: const EdgeInsets.fromLTRB(
-                                        0, 5, 10.9, 10),
-                                    child: Text(
-                                      '2',
-                                      style: GoogleFonts.getFont(
-                                        'Manrope',
-                                        fontWeight: FontWeight.w500,
-                                        fontSize: 14,
-                                        height: 1.4,
-                                        color: const Color(0xFF1E222B),
-                                      ),
-                                    ),
-                                  ),
-                                  Container(
-                                    margin:
-                                        const EdgeInsets.fromLTRB(0, 0, 8, 0),
-                                    child: Container(
-                                      decoration: BoxDecoration(
-                                        color: const Color(0xFFF0F0F2),
-                                        borderRadius: BorderRadius.circular(13),
-                                      ),
-                                      width: 26,
-                                      height: 26,
-                                      child: Stack(
-                                        alignment: Alignment.center,
-                                        children: [
-                                          Container(
-                                            width: 10.5,
-                                            height: 1.5,
-                                            color: const Color(0xFFFE0000),
-                                          ),
-                                          Container(
-                                            width: 1.5,
-                                            height: 10.5,
-                                            color: const Color(0xFFFE0000),
-                                          ),
-                                        ],
-                                      ),
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                      Container(
-                        margin: const EdgeInsets.fromLTRB(16, 0, 16, 19.5),
-                        child: Container(
-                          decoration: const BoxDecoration(
-                            color: Color(0xFFEBEBFB),
-                          ),
-                          child: const SizedBox(
-                            width: 327,
-                            height: 0.5,
-                          ),
-                        ),
-                      ),
-                      Container(
-                        margin: const EdgeInsets.fromLTRB(22, 0, 12, 16),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.start,
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Container(
-                                  margin:
-                                      const EdgeInsets.fromLTRB(0, 4, 26, 8),
-                                  child: Opacity(
-                                    opacity: 0.6,
-                                    child: Container(
-                                      width: 30,
-                                      height: 30,
-                                      padding: const EdgeInsets.fromLTRB(
-                                          2.5, 2.5, 2.5, 2.5),
-                                      child: SizedBox(
-                                        width: 25,
-                                        height: 25,
-                                        child: Image.asset(
-                                          'assets/product1.png',
-                                        ),
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                                Column(
-                                  mainAxisAlignment: MainAxisAlignment.start,
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Container(
-                                      margin:
-                                          const EdgeInsets.fromLTRB(0, 0, 0, 3),
-                                      child: Text(
-                                        'Product 4',
-                                        style: GoogleFonts.getFont(
-                                          'Manrope',
-                                          fontWeight: FontWeight.w400,
-                                          fontSize: 14,
-                                          color: const Color(0xFF1E222B),
-                                        ),
-                                      ),
-                                    ),
-                                    Align(
-                                      alignment: Alignment.topLeft,
-                                      child: Text(
-                                        '\$7.90',
-                                        style: GoogleFonts.getFont(
-                                          'Manrope',
-                                          fontWeight: FontWeight.w400,
-                                          fontSize: 14,
-                                          height: 1.4,
-                                          color: const Color(0xFF1E222B),
-                                        ),
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ],
-                            ),
-                            Container(
-                              margin: const EdgeInsets.fromLTRB(0, 2, 0, 0),
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.start,
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Container(
-                                    margin:
-                                        const EdgeInsets.fromLTRB(0, 0, 8, 0),
-                                    child: Container(
-                                      decoration: BoxDecoration(
-                                        color: const Color(0xFFF0F0F2),
-                                        borderRadius: BorderRadius.circular(13),
-                                      ),
-                                      child: Container(
-                                        width: 26,
-                                        height: 26,
-                                        padding: const EdgeInsets.fromLTRB(
-                                            8, 13, 7.5, 11.5),
-                                        child: Container(
-                                          decoration: const BoxDecoration(
-                                            color: Color(0xFF828A89),
-                                          ),
-                                          child: const SizedBox(
-                                            width: 10.5,
-                                            height: 1.5,
-                                          ),
-                                        ),
-                                      ),
-                                    ),
-                                  ),
-                                  Container(
-                                    margin: const EdgeInsets.fromLTRB(
-                                        0, 5, 10.9, 10),
-                                    child: Text(
-                                      '2',
-                                      style: GoogleFonts.getFont(
-                                        'Manrope',
-                                        fontWeight: FontWeight.w500,
-                                        fontSize: 14,
-                                        height: 1.4,
-                                        color: const Color(0xFF1E222B),
-                                      ),
-                                    ),
-                                  ),
-                                  Container(
-                                    margin:
-                                        const EdgeInsets.fromLTRB(0, 0, 8, 0),
-                                    child: Container(
-                                      decoration: BoxDecoration(
-                                        color: const Color(0xFFF0F0F2),
-                                        borderRadius: BorderRadius.circular(13),
-                                      ),
-                                      width: 26,
-                                      height: 26,
-                                      child: Stack(
-                                        alignment: Alignment.center,
-                                        children: [
-                                          Container(
-                                            width: 10.5,
-                                            height: 1.5,
-                                            color: const Color(0xFFFE0000),
-                                          ),
-                                          Container(
-                                            width: 1.5,
-                                            height: 10.5,
-                                            color: const Color(0xFFFE0000),
-                                          ),
-                                        ],
-                                      ),
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                      Container(
-                        margin: const EdgeInsets.fromLTRB(16, 0, 16, 19.5),
-                        child: Container(
-                          decoration: const BoxDecoration(
-                            color: Color(0xFFEBEBFB),
-                          ),
-                          child: const SizedBox(
-                            width: 327,
-                            height: 0.5,
-                          ),
-                        ),
-                      ),
-                      Container(
-                        margin: const EdgeInsets.fromLTRB(22, 0, 12, 16),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.start,
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Container(
-                                  margin:
-                                      const EdgeInsets.fromLTRB(0, 4, 26, 8),
-                                  child: Opacity(
-                                    opacity: 0.6,
-                                    child: Container(
-                                      width: 30,
-                                      height: 30,
-                                      padding: const EdgeInsets.fromLTRB(
-                                          2.5, 2.5, 2.5, 2.5),
-                                      child: SizedBox(
-                                        width: 25,
-                                        height: 25,
-                                        child: Image.asset(
-                                          'assets/product1.png',
-                                        ),
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                                Column(
-                                  mainAxisAlignment: MainAxisAlignment.start,
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Container(
-                                      margin:
-                                          const EdgeInsets.fromLTRB(0, 0, 0, 3),
-                                      child: Text(
-                                        'Product 5',
-                                        style: GoogleFonts.getFont(
-                                          'Manrope',
-                                          fontWeight: FontWeight.w400,
                                           fontSize: 14,
                                           color: const Color(0xFF1E222B),
                                         ),

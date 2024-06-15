@@ -41,7 +41,7 @@ class ProductItem extends StatelessWidget {
                     left: 0,
                     child: Container(
                       decoration: const BoxDecoration(
-                        color: Color(0xFFFE0000),
+                        color: Color(0xFFFFA500),
                       ),
                       padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 2),
                       child: Text("${product.promotion}%"),

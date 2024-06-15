@@ -1,5 +1,7 @@
 
+import 'package:banhangdienmay/common/router.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 class MyBottomNavigationBar extends StatefulWidget {
   const MyBottomNavigationBar({super.key});
@@ -15,7 +17,21 @@ class _MyBottomNavigationBarState extends State<MyBottomNavigationBar> {
     setState(() {
       _selectedIndex = index;
     });
+    switch (index) {
+      case 0:
+        context.go('/home');
+        break;
+      case 1:
+        context.go('/cart');
+        break;
+      case 2:
+        context.go('/login');
+        break;
+      default:
+        break;
+    }
   }
+
 
   @override
   Widget build(BuildContext context) {
@@ -27,20 +43,20 @@ class _MyBottomNavigationBarState extends State<MyBottomNavigationBar> {
           destinations: const [
             NavigationDestination(
               icon: Icon(Icons.home_outlined, color: Color(0xFFFE0000)),
-              selectedIcon: Icon(Icons.home),
+              selectedIcon: Icon(Icons.home, color: Color(0xFFFE0000)),
               label: 'Trang chủ',
             ),
             NavigationDestination(
-              icon: Icon(Icons.shopping_basket_outlined, color: Color(0xFFFE0000)),
-              selectedIcon: Icon(Icons.shopping_basket),
+              icon: Icon(Icons.shopping_bag_outlined, color: Color(0xFFFE0000)),
+              selectedIcon: Icon(Icons.shopping_bag, color: Color(0xFFFE0000)),
               label: 'Giỏ hàng',
             ),
             NavigationDestination(
               icon: Icon(Icons.person_outline, color: Color(0xFFFE0000)),
-              selectedIcon: Icon(Icons.person),
+              selectedIcon: Icon(Icons.person, color: Color(0xFFFE0000),),
               label: 'Thông tin',
             ),
-          ]
+          ],
       ),
     );
   }

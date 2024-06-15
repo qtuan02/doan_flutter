@@ -1,4 +1,5 @@
 import 'package:banhangdienmay/api/fetchData.dart';
+import 'package:banhangdienmay/view/product/productDetails.dart';
 import 'package:banhangdienmay/widget/ProductItem.dart';
 import 'package:flutter/material.dart';
 
@@ -34,7 +35,15 @@ class _MyProductPopularState extends State<MyProductPopular> {
           ),
           itemCount: Data().productPopular.length,
           itemBuilder: (context, index) {
-            return ProductItem(product: Data().productPopular[index]);
+            return GestureDetector(
+              onTap: (){
+                final product = Data().productPopular[index];
+                Navigator.push(
+                  context, 
+                  MaterialPageRoute(builder: (context) => ProductDetails(product: product)));
+              },
+            child: ProductItem(product: Data().productPopular[index]),
+            );
           },
         ),
       ],
