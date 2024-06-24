@@ -17,13 +17,13 @@ class _MyBottomNavigationBarState extends State<MyBottomNavigationBar> {
     });
     switch (index) {
       case 0:
-        context.go('/home');
+        GoRouter.of(context).go('/home');
         break;
       case 1:
-        context.go('/cart');
+        GoRouter.of(context).go('/cart');
         break;
       case 2:
-        context.go('/login');
+        GoRouter.of(context).push('/signin');
         break;
       default:
         break;
