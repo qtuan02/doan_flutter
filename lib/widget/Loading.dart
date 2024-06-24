@@ -1,6 +1,5 @@
 import 'package:banhangdienmay/api/fetchApi.dart';
 import 'package:banhangdienmay/api/fetchData.dart';
-import 'package:banhangdienmay/main.dart';
 import 'package:banhangdienmay/model/bannerModel.dart';
 import 'package:banhangdienmay/model/categoryModel.dart';
 import 'package:banhangdienmay/model/productModel.dart';

@@ -1,4 +1,3 @@
-import 'package:banhangdienmay/api/fetchData.dart';
 import 'package:banhangdienmay/main.dart';
 import 'package:banhangdienmay/view/cart/cartWidget.dart';
 import 'package:banhangdienmay/view/login/signin.dart';

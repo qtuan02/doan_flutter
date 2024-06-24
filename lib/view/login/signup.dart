@@ -1,8 +1,10 @@
+import 'package:banhangdienmay/common/global.dart';
 import 'package:banhangdienmay/view/login/signin.dart';
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
+import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:http/http.dart';
 
 class Signup extends StatefulWidget {
   const Signup({super.key});
@@ -19,7 +21,32 @@ class SignupPage extends State<Signup> {
       _obscureText = !_obscureText;
     });
   }
+  
+  TextEditingController phoneController = TextEditingController();
+  TextEditingController emailController = TextEditingController();
+  TextEditingController passwordController = TextEditingController();
+  
+  void login(String phone, email, password) async{
+    try{
+      Response response = await post(Uri.parse('$BASE_URL_LOCAL/v2/register'),
+      body: {
+        'phone': phone,
+        'email': email,
+        'password': password,
+      }
+      );
+      if(response.statusCode==200){
+        print('Account created');
+      }
+      else{
+        print('Failed');
+      }
+    }catch(e){
+      print(e.toString());
+    }
+  }
 
+  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -132,8 +159,9 @@ class SignupPage extends State<Signup> {
                                     ),
                                     padding: const EdgeInsets.symmetric(
                                         horizontal: 12, vertical: 12),
-                                    child: const TextField(
-                                      decoration: InputDecoration(
+                                    child: TextFormField(
+                                      controller: phoneController,
+                                      decoration: const InputDecoration(
                                         hintText: 'Nhập vào SĐT',
                                         border: InputBorder.none,
                                       ),
@@ -170,8 +198,9 @@ class SignupPage extends State<Signup> {
                                     ),
                                     padding: const EdgeInsets.symmetric(
                                         horizontal: 12, vertical: 12),
-                                    child: const TextField(
-                                      decoration: InputDecoration(
+                                    child: TextFormField(
+                                      controller: emailController,
+                                      decoration: const InputDecoration(
                                         hintText: 'Nhập vào gmail',
                                         border: InputBorder.none,
                                       ),
@@ -213,6 +242,7 @@ class SignupPage extends State<Signup> {
                                         horizontal: 12, vertical: 12),
                                     child: TextField(
                                         obscureText: _obscureText,
+                                        controller: passwordController,
                                         decoration: InputDecoration(
                                           hintText: 'Nhập vào mật khẩu',
                                           border: InputBorder.none,
@@ -263,6 +293,7 @@ class SignupPage extends State<Signup> {
                                         horizontal: 12, vertical: 12),
                                     child: TextField(
                                         obscureText: _obscureText,
+                                        controller: passwordController,
                                         decoration: InputDecoration(
                                           hintText: 'Nhập lại mật khẩu',
                                           border: InputBorder.none,
@@ -327,33 +358,37 @@ class SignupPage extends State<Signup> {
                                 ),
                               ),
                             ),
-                            Container(
-                              margin: const EdgeInsets.fromLTRB(0, 0, 14.5, 16),
+                            GestureDetector(
+                          onTap: (){
+                            login(phoneController.text.toString(),emailController.text.toString(), passwordController.text.toString());
+                          },
+                          child: Container(
+                            margin: const EdgeInsets.fromLTRB(0, 0, 14.5, 16),
+                            child: Container(
+                              decoration: BoxDecoration(
+                                color: const Color(0xFFFE0000),
+                                borderRadius: BorderRadius.circular(14),
+                              ),
                               child: Container(
-                                decoration: BoxDecoration(
-                                  color: const Color(0xFFFE0000),
-                                  borderRadius: BorderRadius.circular(14),
-                                ),
-                                child: Container(
-                                  padding:
-                                      const EdgeInsets.fromLTRB(0, 16, 5.9, 16),
-                                  child: Align(
-                                    alignment: Alignment
-                                        .center, // Added Align widget with center alignment
-                                    child: Text(
-                                      'Sign Up',
-                                      style: GoogleFonts.getFont(
-                                        'Roboto Condensed',
-                                        fontWeight: FontWeight.w600,
-                                        fontSize: 16,
-                                        height: 1.5,
-                                        color: const Color(0xFFFFFFFF),
-                                      ),
+                                padding:
+                                    const EdgeInsets.fromLTRB(0, 16, 5.9, 16),
+                                child: Align(
+                                  alignment: Alignment.center,
+                                  child: Text(
+                                    'Sign Up',
+                                    style: GoogleFonts.getFont(
+                                      'Roboto Condensed',
+                                      fontWeight: FontWeight.w600,
+                                      fontSize: 16,
+                                      height: 1.5,
+                                      color: const Color(0xFFFFFFFF),
                                     ),
                                   ),
                                 ),
                               ),
                             ),
+                          ),
+                        ),
                             Container(
                               margin: const EdgeInsets.fromLTRB(0, 0, 14.5, 24),
                               child: Container(

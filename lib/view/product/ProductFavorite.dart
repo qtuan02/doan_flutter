@@ -37,7 +37,7 @@ class FavouritePage extends State<Favorite> {
                         children: [
                           GestureDetector(
                             onTap: () {
-                              Navigator.pop(context); // Quay lại trang trước đó
+                              Navigator.pop(context); 
                             },
                             child: Container(
                               decoration: BoxDecoration(

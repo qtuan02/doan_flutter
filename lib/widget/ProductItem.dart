@@ -9,14 +9,13 @@ class ProductItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // Calculate the discounted price if there's a promotion
     final discountedPrice = product.promotion > 0
         ? product.price * (1 - product.promotion / 100)
         : product.price;
 
     return Card(
       shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(0), // Set border radius to 0
+        borderRadius: BorderRadius.circular(0), 
       ),
       color: Colors.white,
       child: Column(
@@ -28,9 +27,9 @@ class ProductItem extends StatelessWidget {
                 Container(
                   width: double.infinity,
                   height: double.infinity,
-                  decoration: BoxDecoration( // Remove const here
+                  decoration: BoxDecoration( 
                     image: DecorationImage(
-                      image: NetworkImage(product.img), // Use product.imageUrl
+                      image: NetworkImage(product.img), 
                       fit: BoxFit.cover,
                     ),
                   ),
@@ -81,7 +80,7 @@ class ProductItem extends StatelessWidget {
                       ),
                     const Spacer(),
                     Text(
-                      'Đã bán ${NumberFormat.decimalPattern().format(product.quantity_sold)}',
+                      'Đã bán ${NumberFormat.decimalPattern().format(product.quantitySold)}',
                       style: const TextStyle(fontSize: 9),
                     ),
                   ],

@@ -18,7 +18,7 @@ class SigninPage extends State<Signin> {
     setState(() {
       _obscureText = !_obscureText;
     });
-  }
+  } 
 
   @override
   Widget build(BuildContext context) {
@@ -47,31 +47,31 @@ class SigninPage extends State<Signin> {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 GestureDetector(
-                                onTap: () {
-                                  context.go('/home');
-                                },
-                                child: Container(
-                                  decoration: BoxDecoration(
-                                    color: const Color(0xFFFFFFFF),
-                                    borderRadius: BorderRadius.circular(50),
-                                  ),
+                                  onTap: () {
+                                    context.go('/home');
+                                  },
                                   child: Container(
-                                    width: 48,
-                                    height: 48,
-                                    padding: const EdgeInsets.fromLTRB(
-                                        10, 10, 15.2, 16),
-                                    child: const SizedBox(
-                                      width: 17.8,
-                                      height: 16,
-                                      child: Icon(
-                                        Icons.arrow_back,
-                                        color: Color(0xFFFE0000),
-                                        size: 30,
+                                    decoration: BoxDecoration(
+                                      color: const Color(0xFFFFFFFF),
+                                      borderRadius: BorderRadius.circular(50),
+                                    ),
+                                    child: Container(
+                                      width: 48,
+                                      height: 48,
+                                      padding: const EdgeInsets.fromLTRB(
+                                          10, 10, 15.2, 16),
+                                      child: const SizedBox(
+                                        width: 17.8,
+                                        height: 16,
+                                        child: Icon(
+                                          Icons.arrow_back,
+                                          color: Color(0xFFFE0000),
+                                          size: 30,
+                                        ),
                                       ),
                                     ),
                                   ),
                                 ),
-                              ),
                                 Container(
                                   margin: const EdgeInsets.fromLTRB(0, 5, 0, 8),
                                   child: Align(
@@ -129,8 +129,8 @@ class SigninPage extends State<Signin> {
                                 ),
                                 padding: const EdgeInsets.symmetric(
                                     horizontal: 12, vertical: 12),
-                                child: const TextField(
-                                  decoration: InputDecoration(
+                                child: TextFormField(
+                                  decoration: const InputDecoration(
                                     hintText: 'Nhập vào gmail',
                                     border: InputBorder.none,
                                   ),
@@ -166,7 +166,7 @@ class SigninPage extends State<Signin> {
                                 ),
                                 padding: const EdgeInsets.symmetric(
                                     horizontal: 12, vertical: 12),
-                                child: TextField(
+                                child: TextFormField(
                                     obscureText: _obscureText,
                                     decoration: InputDecoration(
                                       hintText: 'Nhập vào mật khẩu',
@@ -209,7 +209,9 @@ class SigninPage extends State<Signin> {
                                     onTap: () {
                                       Navigator.push(
                                         context,
-                                        MaterialPageRoute(builder: (context) =>const Signup()),
+                                        MaterialPageRoute(
+                                            builder: (context) =>
+                                                const Signup()),
                                       );
                                     },
                                     child: Text(
@@ -228,27 +230,31 @@ class SigninPage extends State<Signin> {
                             ),
                           ),
                         ),
-                        Container(
-                          margin: const EdgeInsets.fromLTRB(0, 0, 14.5, 16),
+                        GestureDetector(
+                          onTap: (){
+                            
+                          },
                           child: Container(
-                            decoration: BoxDecoration(
-                              color: const Color(0xFFFE0000),
-                              borderRadius: BorderRadius.circular(14),
-                            ),
+                            margin: const EdgeInsets.fromLTRB(0, 0, 14.5, 16),
                             child: Container(
-                              padding:
-                                  const EdgeInsets.fromLTRB(0, 16, 5.9, 16),
-                              child: Align(
-                                alignment: Alignment
-                                    .center, // Added Align widget with center alignment
-                                child: Text(
-                                  'Sign In',
-                                  style: GoogleFonts.getFont(
-                                    'Roboto Condensed',
-                                    fontWeight: FontWeight.w600,
-                                    fontSize: 16,
-                                    height: 1.5,
-                                    color: const Color(0xFFFFFFFF),
+                              decoration: BoxDecoration(
+                                color: const Color(0xFFFE0000),
+                                borderRadius: BorderRadius.circular(14),
+                              ),
+                              child: Container(
+                                padding:
+                                    const EdgeInsets.fromLTRB(0, 16, 5.9, 16),
+                                child: Align(
+                                  alignment: Alignment.center,
+                                  child: Text(
+                                    'Sign In',
+                                    style: GoogleFonts.getFont(
+                                      'Roboto Condensed',
+                                      fontWeight: FontWeight.w600,
+                                      fontSize: 16,
+                                      height: 1.5,
+                                      color: const Color(0xFFFFFFFF),
+                                    ),
                                   ),
                                 ),
                               ),
@@ -297,4 +303,5 @@ class SigninPage extends State<Signin> {
                   ),
                 ))));
   }
+  
 }

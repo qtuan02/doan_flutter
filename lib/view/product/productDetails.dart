@@ -10,11 +10,10 @@ class ProductDetails extends StatefulWidget {
   const ProductDetails({super.key, required this.product});
   @override
   ProductDetailsPage createState() => ProductDetailsPage();
-}
+} 
 
 class ProductDetailsPage extends State<ProductDetails> {
   int quantity = 1;
-
   void incrementQuantity() {
     setState(() {
       quantity++;
@@ -28,7 +27,6 @@ class ProductDetailsPage extends State<ProductDetails> {
       });
     }
   }
-
 
   @override
   Widget build(BuildContext context) {
@@ -52,7 +50,7 @@ class ProductDetailsPage extends State<ProductDetails> {
                         children: [
                           GestureDetector(
                             onTap: () {
-                              Navigator.pop(context); // Quay lại trang trước đó
+                              Navigator.pop(context); 
                             },
                             child: Container(
                               decoration: BoxDecoration(
@@ -226,7 +224,41 @@ class ProductDetailsPage extends State<ProductDetails> {
                                         ),
                                         children: [
                                           TextSpan(
-                                            text: widget.product.category_name,
+                                            text: widget.product.categoryName,
+                                            style: GoogleFonts.getFont(
+                                              'Roboto Condensed',
+                                              fontWeight: FontWeight.w400,
+                                              fontSize: 16,
+                                              height: 1.6,
+                                              color: const Color(0xFF000000),
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                            Row(
+                              children: [
+                                Container(
+                                  margin: const EdgeInsets.fromLTRB(0, 0, 0, 8),
+                                  child: Align(
+                                    alignment: Alignment.topLeft,
+                                    child: RichText(
+                                      text: TextSpan(
+                                        text: 'Thương hiệu: ',
+                                        style: GoogleFonts.getFont(
+                                          'Roboto Condensed',
+                                          fontWeight: FontWeight.w500,
+                                          fontSize: 20,
+                                          height: 1.4,
+                                          color: const Color(0xFF000000),
+                                        ),
+                                        children: [
+                                          TextSpan(
+                                            text: widget.product.brandName,
                                             style: GoogleFonts.getFont(
                                               'Roboto Condensed',
                                               fontWeight: FontWeight.w400,
