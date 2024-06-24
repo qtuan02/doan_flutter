@@ -20,7 +20,7 @@ class ProductModel {
       id: data['product_id'],
       name: data['product_name'],
       img: data['image'],
-      description: data['description'] != null ? parseDescription(data['description']) : '',
+      description: parseDescription(data['description']),
       brandName: data['brand_name'],
       categoryName: data['category_name'],
       quantity: data['quantity'],

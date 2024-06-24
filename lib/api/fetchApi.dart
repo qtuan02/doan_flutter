@@ -32,6 +32,16 @@ Future<Map<String, dynamic>> fetchQuantitySold() async {
   }
 }
 
+Future<Map<String, dynamic>> fetchProductDetail(int product_id) async {
+  final res = await http.get(Uri.parse('$BASE_URL_LOCAL/v1/product/$product_id'));
+  if (res.statusCode == 200) {
+    final result = jsonDecode(res.body) as Map<String, dynamic>;
+    return result;
+  } else {
+    throw Exception("Call api failed !");
+  }
+}
+
 Future<Map<String, dynamic>> handlerSignIn(String account, String password) async {
   final url = Uri.parse('$BASE_URL_LOCAL/v2/user/login');
   final res = await http.post(
