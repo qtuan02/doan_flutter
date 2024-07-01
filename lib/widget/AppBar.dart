@@ -1,3 +1,4 @@
+import 'package:banhangdienmay/widget/Search.dart';
 import 'package:flutter/material.dart';
 
 class MyAppBar extends StatefulWidget {
@@ -12,27 +13,23 @@ class _MyAppBarState extends State<MyAppBar> {
   Widget build(BuildContext context) {
     return AppBar(
       backgroundColor: const Color(0xFFFE0000),
-      actions: <Widget>[
-        Padding(
-          padding: const EdgeInsets.fromLTRB(0, 0, 0, 0),
-          child: Image.asset('assets/logo.png'),
+      leading: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Image.asset(
+          'assets/logo.png',
+          width: 60, 
+          height: 60, 
         ),
-        Expanded(
-          child: Padding(
-            padding: const EdgeInsets.fromLTRB(10, 6, 10, 8),
-            child: Container(
-              color: Colors.white,
-              child: TextField(
-                decoration: const InputDecoration(
-                  hintText: 'Tìm kiếm...',
-                  border: InputBorder.none,
-                  prefixIcon: Icon(Icons.search),
-                ),
-                onChanged: (value) {
-                },
-              ),
-            ),
-          ),
+      ),
+      actions: <Widget>[
+        IconButton(
+          icon: const Icon(Icons.search, color: Colors.white,),
+          onPressed: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => const SearchScreen()),
+            );
+          },
         ),
       ],
     );

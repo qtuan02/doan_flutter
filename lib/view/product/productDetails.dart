@@ -1,5 +1,6 @@
 import 'package:banhangdienmay/model/productModel.dart';
 import 'package:banhangdienmay/view/product/ProductFavorite.dart';
+import 'package:banhangdienmay/widget/BottomNavigationBar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -487,6 +488,8 @@ class ProductDetailsPage extends State<ProductDetails> {
                   ],
                 ),
               ),
-            )));
+            )
+          ),
+        );
   }
 }

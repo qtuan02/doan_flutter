@@ -456,6 +456,9 @@ class CartwidgetPage extends State<CartWidget> {
               ],
             ),
           ),
-        ));
+        )
+        
+      );
+      
   }
 }

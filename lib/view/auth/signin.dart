@@ -14,6 +14,7 @@ class SignIn extends StatefulWidget {
 class _SignInState extends State<SignIn> {
   final TextEditingController _account = TextEditingController();
   final TextEditingController _password = TextEditingController();
+  bool _isObscure = true;
 
   @override
   void dispose() {
@@ -31,7 +32,7 @@ class _SignInState extends State<SignIn> {
         SharedPreferences prefs = await SharedPreferences.getInstance();
         prefs.setString('token', token);
         if (mounted) {
-          Navigator.pop(context);
+          GoRouter.of(context).go('/home');
         }
       } else {
         handleShowToast('Không nhận được token từ server');
@@ -41,11 +42,22 @@ class _SignInState extends State<SignIn> {
     }
   }
 
+  void _toggleObscure() {
+    setState(() {
+      _isObscure = !_isObscure;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_back),
+          onPressed: () {
+            context.go('/home');
+          },
+        ),
         title: const Text('Đăng nhập'),
         backgroundColor: Colors.orange,
       ),
@@ -54,6 +66,18 @@ class _SignInState extends State<SignIn> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Image.asset(
+                  'assets/logo.png', 
+                  width: 150, 
+                  height: 150, 
+                  fit: BoxFit.contain, 
+                ),
+              ],
+            ),
+            const SizedBox(height: 10.0),
             const Text(
               'Chào mừng quý khách! Vui lòng đăng nhập!',
               style: TextStyle(
@@ -69,30 +93,39 @@ class _SignInState extends State<SignIn> {
                 labelText: 'Tài khoản',
                 hintText: 'Nhập tài khoản...',
                 focusedBorder: OutlineInputBorder(
-                  borderSide: BorderSide(color: Colors.orange), // Viền cam khi focus
+                  borderSide: BorderSide(color: Colors.orange),
                 ),
                 enabledBorder: OutlineInputBorder(
-                  borderSide: BorderSide(color: Colors.orange), // Viền cam
+                  borderSide: BorderSide(color: Colors.orange),
                 ),
               ),
             ),
             const SizedBox(height: 20.0),
             TextField(
-              controller: _password,
-              decoration: const InputDecoration(
-                labelText: 'Mật khẩu',
-                hintText: 'Nhập mật khẩu...',
-                focusedBorder: OutlineInputBorder(
-                  borderSide: BorderSide(color: Colors.orange), // Viền cam khi focus
-                ),
-                enabledBorder: OutlineInputBorder(
-                  borderSide: BorderSide(color: Colors.orange), // Viền cam
-                ),
+            controller: _password,
+            decoration: InputDecoration(
+              labelText: 'Mật khẩu',
+              hintText: 'Nhập mật khẩu...',
+              focusedBorder: const OutlineInputBorder(
+                borderSide: BorderSide(color: Colors.orange),
               ),
-              obscureText: true, // Ẩn mật khẩu
+              enabledBorder: const OutlineInputBorder(
+                borderSide: BorderSide(color: Colors.orange),
+              ),
+              suffixIcon: IconButton(
+                icon: Icon(
+                  _isObscure ? Icons.visibility_off : Icons.visibility,
+                  color: Colors.orange,
+                ),
+                onPressed: _toggleObscure,
+              ),
             ),
+            obscureText: _isObscure,
+          ),
             TextButton(
-              onPressed: () { GoRouter.of(context).push('/signup'); },
+              onPressed: () {
+                GoRouter.of(context).push('/signup');
+              },
               child: const Text(
                 'Chưa có tài khoản? Đăng ký ngay!',
                 style: TextStyle(color: Colors.blue),
@@ -100,7 +133,7 @@ class _SignInState extends State<SignIn> {
             ),
             const SizedBox(height: 20.0),
             ElevatedButton(
-              onPressed: (){
+              onPressed: () {
                 _handleLogin(_account.text, _password.text);
               },
               style: ElevatedButton.styleFrom(

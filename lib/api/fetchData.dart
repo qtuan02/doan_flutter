@@ -7,6 +7,7 @@ class Data {
   List<CategoryModel> categories = [];
   List<ProductModel> productPopular = [];
   List<ProductModel> productFavorite = [];
+  List<ProductModel> products = [];
   static final Data _instance = Data._internal();
   factory Data() {
     return _instance;

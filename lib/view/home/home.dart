@@ -15,7 +15,7 @@ class _HomeState extends State<Home> {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-        color: Colors.grey[200], // Màu nền của background
+        color: Colors.grey[200],
       ),
       child: const SingleChildScrollView(
         child: Column(

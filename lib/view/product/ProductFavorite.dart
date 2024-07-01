@@ -1,5 +1,7 @@
 import 'package:banhangdienmay/api/fetchData.dart';
+import 'package:banhangdienmay/widget/BottomNavigationBar.dart';
 import 'package:banhangdienmay/widget/ProductItem.dart';
+import 'package:banhangdienmay/widget/ProductItemFavorite.dart';
 import 'package:flutter/material.dart';
 import 'dart:ui';
 import 'package:google_fonts/google_fonts.dart';
@@ -110,13 +112,17 @@ class FavouritePage extends State<Favorite> {
                       ),
                       itemCount: Data().productPopular.length,
                       itemBuilder: (context, index) {
-                        return ProductItem(
+                        return ProductItemFavorite(
                             product: Data().productPopular[index]);
                       },
                     ),
+                    
                   ],
                 ),
               ),
-            ))));
+            )
+          )
+        ),
+      );
   }
 }

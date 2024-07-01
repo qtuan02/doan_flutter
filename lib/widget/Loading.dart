@@ -37,10 +37,16 @@ class _LoadingScreenState extends State<LoadingScreen> {
     Map<String, dynamic> dataBanner = await fetchBanner();
     Map<String, dynamic> dataCategory = await fetchCategory();
     Map<String, dynamic> dataProductPopular = await fetchQuantitySold();
+    // Map<String, dynamic> dataProductFavorite = await fetchProductFavorite();
+    Map<String, dynamic> dataProducts = await fetchAllProduct();
+
 
     Iterable listBanner = dataBanner['data'];
     Iterable listCategory = dataCategory['data'];
     Iterable listProductPopular = dataProductPopular['data'];
+    // Iterable listProductFavorite = dataProductFavorite['data'];
+    Iterable listProducts = dataProducts['data'];
+
 
     Data.getInstance().banners.clear();
     Data.getInstance().banners.addAll(listBanner.map((item) => BannerModel.fromJson(item)).toList());
@@ -50,6 +56,12 @@ class _LoadingScreenState extends State<LoadingScreen> {
 
     Data.getInstance().productPopular.clear();
     Data.getInstance().productPopular.addAll(listProductPopular.map((item) => ProductModel.fromJson(item)).toList());
+    
+    // Data.getInstance().productFavorite.clear();
+    // Data.getInstance().productFavorite.addAll(listProductFavorite.map((item) => ProductModel.fromJson(item)).toList());
+
+    Data.getInstance().products.clear();
+    Data.getInstance().products.addAll(listProducts.map((item) => ProductModel.fromJson(item)).toList());
 
     if(mounted) {
       if(listBanner.isNotEmpty && listCategory.isNotEmpty && listProductPopular.isNotEmpty){
